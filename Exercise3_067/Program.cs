@@ -172,8 +172,12 @@ namespace Exercise3_067
                                 obj.firstnode();
                             }
                             break;
+                        case '4':
+                            {
+                                obj.addNode();
+                            }
+                            break;
                        
-
             }
         }
     }
