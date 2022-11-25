@@ -193,10 +193,19 @@ namespace Exercise3_067
                                     Console.WriteLine("Records with roll number " + nim + "Deleted");
                             }
                             break;
-                       
+                        case '6':
+                            return;
+                        default:
+                            {
+                                Console.WriteLine("\nInvalid option");
+                            }
+                            break;
 
-            }
-        }
+
+
+
+                    }
+                }
     }
 
 }
