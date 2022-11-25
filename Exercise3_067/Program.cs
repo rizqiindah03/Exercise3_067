@@ -109,6 +109,18 @@ namespace Exercise3_067
             prev.next = newNode;
 
         }
+        public bool delNode(int nim)
+        {
+            node prev, curr;
+            prev = curr = null;
+            //check if the spesified node is present in the list or not
+            if (Search(nim, ref prev, ref curr) == false)
+                return false;
+            prev.next = curr.next;
+            if (curr == LAST)
+                LAST = LAST.next;
+            return true;
+        }
 
         static void Main(string[] args)
         {
