@@ -32,14 +32,30 @@ namespace Exercise3_067
             else
                 return (false);/*returns false is the node is not found*/
         }
-        public bool listempty()
+        public bool listEmpty()
         {
             if (LAST == null)
                 return true;
             else
                 return false;
         }
-
+        public void traverse()/*Traverses all the nodes of the list*/
+        {
+            if (listEmpty())
+                Console.WriteLine("\nlist is empty");
+            else
+            {
+                Console.WriteLine("\nRecords in the list are:\n");
+                node currentNode;
+                currentNode = LAST.next;
+                while (currentNode != LAST)
+                {
+                    Console.Write(currentNode.rollNumber + " " + currentNode.name + "\n");
+                    currentNode = currentNode.next;
+                }
+                Console.Write(LAST.rollNumber + " " + LAST.name + "\n");
+            }               
+        }
 
     }
 
