@@ -11,7 +11,7 @@ namespace Exercise3_067
         /*create Nodes for the circular nextad list*/
         public int rollNumber;
         public string name;
-        public node next;
+        public node next; 
     }
 
 }
