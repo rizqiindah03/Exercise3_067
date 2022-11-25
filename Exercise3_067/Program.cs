@@ -32,6 +32,13 @@ namespace Exercise3_067
             else
                 return (false);/*returns false is the node is not found*/
         }
+        public bool listempty()
+        {
+            if (LAST == null)
+                return true;
+            else
+                return false;
+        }
 
 
     }
