@@ -177,7 +177,24 @@ namespace Exercise3_067
                                 obj.addNode();
                             }
                             break;
+                        case '5':
+                            {
+                                if (obj.listEmpty())
+                                {
+                                    Console.WriteLine("\nlist is empty");
+                                    break;
+                                }
+                                Console.Write("\nEnter the roll number of" + " the student whose records is to be deleted:");
+                                int nim = Convert.ToInt32(Console.ReadLine());
+                                Console.WriteLine();
+                                if (obj.delNode(nim) == false)
+                                    Console.WriteLine("\n Records not found.");
+                                else
+                                    Console.WriteLine("Records with roll number " + nim + "Deleted");
+                            }
+                            break;
                        
+
             }
         }
     }
