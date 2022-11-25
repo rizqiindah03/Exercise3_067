@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -200,11 +201,11 @@ namespace Exercise3_067
                                 Console.WriteLine("\nInvalid option");
                             }
                             break;
-
-
-
-
-                    }
+                     }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
                 }
     }
 
