@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Exercise3_067
@@ -13,6 +15,7 @@ namespace Exercise3_067
         public string name;
         public node next; 
     }
+
     class Circularlist
     {
         node LAST;
@@ -63,7 +66,113 @@ namespace Exercise3_067
             else
                 Console.WriteLine("\nthe first record in the list is:\n\n" + LAST.next.rollNumber + " " + LAST.next.name);
         }
+        public void addNode()
+        {
+            int nim;
+            string name;
+            Console.WriteLine("\nEnter the roll number of the student: ");
+            nim = Convert.ToInt32(Console.ReadLine());
+            Console.Write("\nEnter the name of the student: ");
+            name = Console.ReadLine();
+            node newNode = new node();
+            newNode.rollNumber = nim;
+            newNode.name = name;
+            // if the node to be inserted is the first node
+            if (LAST == null || nim <= LAST.rollNumber) ;
+            {
+                if ((LAST != null) && (nim == LAST.rollNumber)) ;
+                {
+                    Console.WriteLine("\nDuplicate roll numbers not allowed\n");
+                    return;
+                }
+                newNode.next = LAST;
+                LAST = newNode;
+                return;
+            }
+            //locate the position of the new node in the list 
+            node prev, curr;
+            prev = LAST;
+            curr = LAST;
 
+            while ((curr != null) && (nim <= curr.rollNumber))
+            {
+                if (nim == curr.rollNumber)
+                {
+                    Console.WriteLine("\nDuplicate roll number not allowed\n");
+                    return;
+                }
+                prev = curr;
+                curr = curr.next;
+            }
+            //*once the above for loop is executed */
+            newNode.next = curr;
+            prev.next = newNode;
+
+        }
+
+        static void Main(string[] args)
+        {
+            Circularlist obj = new Circularlist();
+            while (true)
+            {
+                try
+                {
+                    Console.WriteLine("\nMenu");
+                    Console.WriteLine("1. View all the records in the list");
+                    Console.WriteLine("2. Search for a record in the list");
+                    Console.WriteLine("3. Display the first record in the list");
+                    Console.WriteLine("4. Exit");
+                    Console.Write("\nEnter your choice (1-6): ");
+                    char ch = Convert.ToChar(Console.ReadLine());
+                    switch (ch)
+                    {
+                        case '1':
+                            {
+                                obj.traverse();
+                            }
+                            break;
+                        case '2':
+                            {
+                                if (obj.listEmpty() == true)
+                                {
+                                    Console.WriteLine("\nlist is empty");
+                                    break;
+
+                                }
+                                node prev, curr;
+                                prev = curr = null;
+                                Console.Write("\nEnter the roll number of the student whose record is to be searched :");
+                                int num = Convert.ToInt32(Console.ReadLine());
+                                if (obj.Search(num, ref prev, ref curr) == false)
+                                    Console.WriteLine("\nRecord not found");
+                                else
+                                {
+                                    Console.WriteLine("\nRecord found");
+                                    Console.WriteLine("\nRoll number : " + curr.rollNumber);
+                                    Console.WriteLine("\nName: " + curr.name);
+                                }
+                            }
+                            break;
+                        case '3':
+                            {
+                                obj.firstnode();
+                            }
+                            break;
+                        case '4':
+                            return;
+                        default:
+                            {
+                                Console.WriteLine("Invalid option");
+                                break;
+                            }
+                    }
+                }
+                catch (Exception e )
+                {
+                    Console.WriteLine(e.ToString());
+                }
+            }
+        }
     }
 
 }
